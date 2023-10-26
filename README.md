@@ -43,7 +43,7 @@ Classe que representa um pedido de cobrança para o número de um respetivo util
 
 - CharginReply.java:
 
-Esta classe representa uma resposta, afirmativa ou negativa, a um pedido de cobrança. Contém o ID, igual ao ChargingRequest, o resultado e o número de GSUs.
+Esta classe representa uma resposta, afirmativa ou negativa, a um pedido de cobrança. Contém o ID, igual ao ChargingRequest que o originou, o resultado e o número de GSUs.
 
 
 - ClientDataRecord.java:
