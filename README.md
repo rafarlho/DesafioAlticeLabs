@@ -3,7 +3,7 @@
 Desafio proposto pela Altice Labs, reecaminhado pela empresa Dellent.
 
 
-Com face ao desafio proposto e que o enunciado se encontra no repositório, a lista de ficheiros correspondestes é a seguinte:
+Com face ao desafio proposto e que o enunciado se encontra no repositório, a lista de ficheiros correspondentes à solução é a seguinte:
 
 
 	->src/
