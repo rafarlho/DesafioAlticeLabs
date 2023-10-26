@@ -1,8 +1,7 @@
 package TelecomComp;
 
-import java.text.SimpleDateFormat;  
+import java.text.SimpleDateFormat;
 import java.util.Date;
-
 public class ChargingRequest {
     //Private class variables
     private int MSISDN, RSU;
@@ -35,7 +34,7 @@ public class ChargingRequest {
     public Date getTimestampDate() {return this.timeStamp;}
     //Getter for ID
     public int getID() {return this.ID;}
-    //Getter for Service 
+    //Getter for Service
     public String getService() {return this.service;}
     //Getter for roaming
     public boolean getRoaming() {return this.roaming;}

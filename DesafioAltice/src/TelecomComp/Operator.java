@@ -1,5 +1,6 @@
 package TelecomComp;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -7,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Operator {
-    
+
     private HashMap<Integer,List<ClientDataRecord>> reportsByNumber;
     private HashMap<Integer,BillingAccount> billingHashMap;
 
@@ -15,11 +16,23 @@ public class Operator {
         this.reportsByNumber = new HashMap<>();
         this.billingHashMap = new HashMap<>();
     }
+    //Getter and setter for billing account
     public void setBillingAccount(Integer MSISDN, String planA, String planB,double bucketA, double bucketB, double bucketC) {
         BillingAccount billingAccount = new BillingAccount(MSISDN, planA, planB, bucketA,bucketB,bucketC);
         billingHashMap.put(MSISDN, billingAccount);
+    } public void setBillingAccount(BillingAccount b) {
+        billingHashMap.put(b.getMSISDN(), b);
     }
-  
+    public HashMap<Integer, BillingAccount> getBillingAccount() {
+        return this.billingHashMap;
+    }
+    //Getter for CRDS hash map
+
+    public HashMap<Integer, List<ClientDataRecord>> getReportsByNumber() {
+        return this.reportsByNumber;
+    }
+
+    //Handles the request
     public void makeRequest(ChargingRequest request) {
         if(this.billingHashMap.containsKey(request.getMSISDN())) {
             ChargingHandler handler = new ChargingHandler(request, this.billingHashMap.get(request.getMSISDN()));
@@ -45,7 +58,7 @@ public class Operator {
                 reportsByNumber.put(request.getMSISDN(),temp);
 
             }
-        }
+        }else System.err.println("Number "+ request.getMSISDN() +  " not found in billing records.");
 
     }
     //Prints all the saved CDRS
@@ -55,10 +68,9 @@ public class Operator {
         for(HashMap.Entry<Integer,List<ClientDataRecord>> entry : this.reportsByNumber.entrySet()) {
             toPrint+= "\nCRDs for number " + entry.getKey() + ":";
             for(ClientDataRecord cdr :entry.getValue()) {
-                if(cdr == null) {
-                    System.out.println("Something went wront printing the CDRS");
+                if(cdr != null) {
+                    toPrint += ("\n"+ cdr.toString() + "\n");
                 }
-                else toPrint += ("\n"+ cdr.toString() + "\n");
             }
         }
         return toPrint;
@@ -72,5 +84,5 @@ public class Operator {
         }
         return toPrint;
     }
-    
+
 }

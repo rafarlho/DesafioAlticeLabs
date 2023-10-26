@@ -13,7 +13,7 @@ public class BillingAccount {
     public BillingAccount(int MSISDN ,String planA, String planB, double bucketA, double bucketB , double bucketC) {
         this.MSISDN = MSISDN;
         this.planA = planA;
-        this.planB = planB;  
+        this.planB = planB;
         this.bucketA = bucketA;
         this.bucketB = bucketB;
         this.bucketC = bucketC;
@@ -30,8 +30,8 @@ public class BillingAccount {
     //Method to print billing account
     public String toString() {
         return " MSISDN : " + this.MSISDN+
-                "\n Service A Plan : " + this.planA+ 
-                "\n Service B Plan : " + this.planB + 
+                "\n Service A Plan : " + this.planA+
+                "\n Service B Plan : " + this.planB +
                 "\n Bucket A : " + this.bucketA +
                 "\n Bucket B : " + this.bucketB +
                 "\n Bucket C : " + this.bucketC +
@@ -69,4 +69,3 @@ public class BillingAccount {
     //Getter for service B plan
     public String getServiceBPlan() {return this.planB;}
 }
-
