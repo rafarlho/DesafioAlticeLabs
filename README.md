@@ -28,7 +28,7 @@ Face ao desafio proposto, a lista de ficheiros correspondentes à proposta de so
 
 
 
-Uma descrição mais detalhada de cada ficheiro encontra-se a baixo.
+Uma descrição mais detalhada de cada ficheiro encontra-se abaixo.
 
 
  - BillingAccount.java:
