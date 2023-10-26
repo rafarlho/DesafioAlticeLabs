@@ -1,8 +1,12 @@
 # DesafioAlticeLabs
+
 Desafio proposto pela Altice Labs, reecaminhado pela empresa Dellent.
 
+
 Com face ao desafio proposto, a lista de ficheiros correspondestes é a seguinte:
+
 ->DesafioAltice/
+
 	->src/
 		->ChargingHandlerTest.java
 		->OperatorTest.java
