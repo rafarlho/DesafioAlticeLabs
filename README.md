@@ -3,7 +3,7 @@
 Desafio proposto pela Altice Labs, reecaminhado pela empresa Dellent.
 
 
-Face ao desafio proposto e que o enunciado se encontra no repositório, a lista de ficheiros correspondentes à solução é a seguinte:
+Face ao desafio proposto, a lista de ficheiros correspondentes à solução é a seguinte:
 
 
 	->src/
@@ -28,7 +28,7 @@ Face ao desafio proposto e que o enunciado se encontra no repositório, a lista 
 
 
 
-Umaa descrição mais detalhada de cada ficheiro encontra-se a baixo.
+Uma descrição mais detalhada de cada ficheiro encontra-se a baixo.
 
 
  - BillingAccount.java:
