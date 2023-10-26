@@ -75,4 +75,6 @@ Teste unitário aplicado à classe Operator, recorrendo a Junit5, que testa o co
 - CharginHandlerTest.java:
 
 Classe de testes que testa a cobrança dos vários tarifários e dos valores aplicáveis possíveis. Esta classe testa todos os tarifários em diferentes condições e com diferentes valores nos buckets, assegurando que a cobrança efetuada é sempre correta.
+
+Os resultados dos testes podem ser encontrados no formato HTML no diretório DesafioAltice/.
 		
