@@ -43,7 +43,7 @@ Classe que representa um pedido de cobrança para o número de um respetivo util
 
 - CharginReply.java:
 
-Esta classe representa uma resposta, afirmativa ou negativa, a um pedido de cobrança. Contém o ID, igual ao pedido de cobrança, o resultado e o número de GSUs.
+Esta classe representa uma resposta, afirmativa ou negativa, a um pedido de cobrança. Contém o ID, igual ao ChargingRequest, o resultado e o número de GSUs.
 
 
 - ClientDataRecord.java:
@@ -76,4 +76,6 @@ Teste unitário aplicado à classe Operator, recorrendo a Junit5, que testa o Co
 
 Classe de testes que testa a cobrança dos vários tarifários e dos valores aplicáveis possíveis. Esta classe testa todos os tarifários em diferentes condições e com diferentes valores nos buckets, assegurando que a cobrança efetuada é sempre correta.
 
+
+Nota: Não foram possívei fazer testes referentes a condições de dias da semana ou períodos nocturnos devido à modelação de dados, visto que o request guarda a informção do 
 		
