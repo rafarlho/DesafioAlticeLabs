@@ -54,16 +54,16 @@ Apresenta ainda os valores dos buckets e counters do utilizador na data da trans
 
 - ChargingHandler.java:
 
-Esta classe tem como objetivo lidar com um pedido de cobrança, calcular a elegiibilidade e o custo, determinar o charging reply e gerar o respetivo CDR.
-Em detalhe o método ChargingHandler(ChargingRequest request, BillingAccount billingAccount) inicialmente cria um nova ChargingReply sem resultado e define GSU como 0. 
+Esta classe tem como objetivo lidar com um pedido de cobrança, calcular a elegibilidade e o custo, determinar o charging reply e gerar o respetivo CDR.
+Em detalhe, o método ChargingHandler(ChargingRequest request, BillingAccount billingAccount) inicialmente cria um nova ChargingReply sem resultado e define GSU como 0. 
 Após isto, a classe dispõe de 6 funções para lidarem com cada tarifário : HandleAlphaX(ChargingRequest, BillingAccount) e HandleBetaX(ChargingRequest, BillingAcount) que calculam em função do serviço e do respetivo tarifário, se o utilizador pode ou não executar o pedido e emite o resultado, debitando o custo se for o caso.
 Concluido esta operação, o método ChargingHandler() define o resultado do CDR e guarda-o, juntamente com o ChargingReply.
 
 
 - Operator.java:
 
-Esta classe funciona como uma strutura de dados como uma operadora, com capacidade de fazer cobranças e verificar os CDRs e as BillingAccounts de todos os utilizadores.
-Temo como métodos setBillingAccount(Billing Account) que cria e guarda num HashMap o número e a respetiva BillingAccount e makeRequest(ChargingRequest), que recebe um pedido de cobrança, verifica se é legitimo com base no registo das BillingAccounts e submete o pedido para para o ChargingHandler o tratar. Após isto adiciona o respetivo CDR à lista dos registos do respetivo número e ordena esta lista com base no pedido mais recente.
+Esta classe funciona como uma estrutura de dados, que à semelhança de uma operadora, tem a capacidade de fazer cobranças e verificar os CDRs e as BillingAccounts de todos os utilizadores.
+Tem como métodos setBillingAccount(Billing Account), que cria e guarda num HashMap o número e a respetiva BillingAccount e makeRequest(ChargingRequest), que recebe um pedido de cobrança, verifica se é legitimo com base no registo das BillingAccounts e submete o pedido para para o ChargingHandler o tratar. Após isto adiciona o respetivo CDR à lista dos registos do respetivo número e ordena esta lista com base no pedido mais recente.
 Caso não exista o número do pedido nos billings records, retorna uma mensagem a indicar o sucecido.
 
 
