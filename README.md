@@ -33,7 +33,7 @@ Umaa descrição mais detalhada de cada ficheiro encontra-se a baixo.
 
  - BillingAccount.java:
 
-Classe que representa uma conta de um utilizador. Tem a informação do número, tarifários de ambos os serviços, buckets e counters.
+Classe que representa uma conta de um utilizador. Tem a informação do número, tarifários de ambos os serviços e os valores dos buckets e counters.
 
 
 - CharginRequest.java:
