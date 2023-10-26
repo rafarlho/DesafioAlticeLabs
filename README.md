@@ -56,24 +56,23 @@ Apresenta ainda os valores dos buckets e counters do utilizador na data da trans
 
 Esta classe tem como objetivo lidar com um pedido de cobrança, calcular a elegibilidade e o custo, determinar o charging reply e gerar o respetivo CDR.
 Em detalhe, o método ChargingHandler(ChargingRequest request, BillingAccount billingAccount) inicialmente cria um nova ChargingReply sem resultado e define GSU como 0. 
-Após isto, a classe dispõe de 6 funções para lidarem com cada tarifário : HandleAlphaX(ChargingRequest, BillingAccount) e HandleBetaX(ChargingRequest, BillingAcount) que calculam em função do serviço e do respetivo tarifário, se o utilizador pode ou não executar o pedido e emite o resultado, debitando o custo se for o caso.
+Após isto, a classe dispõe de 6 funções para lidarem com cada tarifário: HandleAlphaX(ChargingRequest, BillingAccount) e HandleBetaX(ChargingRequest, BillingAcount) que calculam em função do serviço e do respetivo tarifário, se o utilizador pode ou não executar o pedido e emite o resultado, debitando o custo se for o caso.
 Concluido esta operação, o método ChargingHandler() define o resultado do CDR e guarda-o, juntamente com o ChargingReply.
 
 
 - Operator.java:
 
 Esta classe funciona como uma estrutura de dados, que à semelhança de uma operadora, tem a capacidade de fazer cobranças e verificar os CDRs e as BillingAccounts de todos os utilizadores.
-Tem como métodos setBillingAccount(Billing Account), que cria e guarda num HashMap o número e a respetiva BillingAccount e makeRequest(ChargingRequest), que recebe um pedido de cobrança, verifica se é legitimo com base no registo das BillingAccounts e submete o pedido para para o ChargingHandler o tratar. Após isto adiciona o respetivo CDR à lista dos registos do respetivo número e ordena esta lista com base no pedido mais recente.
+Tem como métodos setBillingAccount(Billing Account), que cria e guarda num HashMap o número e a respetiva BillingAccount; e makeRequest(ChargingRequest), que recebe um pedido de cobrança, verifica se é legitimo com base no registo das BillingAccounts e submete o pedido para o ChargingHandler o tratar. Após isto adiciona o respetivo CDR à lista dos registos do respetivo número e ordena esta lista com base no pedido mais recente.
 Caso não exista o número do pedido nos billings records, retorna uma mensagem a indicar o sucecido.
 
 
 - OperatorTest.java:
 
-Teste unitário aplicado à classe Operator, recorrendo a Junit5, que testa o Contrutor da classe e inicialização dos HashMaps de BillingAccounts e CDRs, a adição de uma BillingAccount ao respetivo HashMap e a efetuação de um pedido, mais especificamente, a adição de CDRs de um utilizador ao respetivo HashMap.
+Teste unitário aplicado à classe Operator, recorrendo a Junit5, que testa o construtor da classe e inicialização dos HashMaps de BillingAccounts e CDRs, a adição de uma BillingAccount ao respetivo HashMap e a efetuação de um pedido, mais especificamente, a adição de CDRs de um utilizador ao respetivo HashMap.
 
 
 - CharginHandlerTest.java:
 
 Classe de testes que testa a cobrança dos vários tarifários e dos valores aplicáveis possíveis. Esta classe testa todos os tarifários em diferentes condições e com diferentes valores nos buckets, assegurando que a cobrança efetuada é sempre correta.
-
 		
