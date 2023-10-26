@@ -4,13 +4,13 @@ import java.util.Calendar;
 import java.util.Objects;
 
 public class ChargingHandler {
+
     private ChargingReply charRep;
     private double cost;
     private Calendar cal = Calendar.getInstance();
     private ClientDataRecord CDR = null;
 
     public ChargingHandler(ChargingRequest request, BillingAccount billingAccount) {
-
         cal.setTime(request.getTimestampDate());
         this.charRep = new ChargingReply(request.getID());
         this.charRep.setGSU(0);
@@ -53,16 +53,14 @@ public class ChargingHandler {
         }
         //Creates a CDR if the charging was complete
         String response = this.charRep.getStatus();
-        if(Objects.equals(response, "OK")) {
-            if(Objects.equals(request.getService(), "A")) {
+        if(Objects.equals(request.getService(), "A")) {
                 this.CDR = new ClientDataRecord(request.getTimestampDate(), billingAccount.getMSISDN(),
                         request, this.charRep, billingAccount.getCounterA(), billingAccount.getCounterB(), billingAccount.getCounterC(), billingAccount.getCounterD(), request.getService(), billingAccount.getServiceAPlan(), billingAccount.getBucketA(), billingAccount.getBucketB(),billingAccount.getBucketC());
             }
             else if(Objects.equals(request.getService(), "B")) {
-                this.CDR = new ClientDataRecord(request.getTimestampDate(), billingAccount.getMSISDN(),
-                        request, this.charRep, billingAccount.getCounterA(), billingAccount.getCounterB(), billingAccount.getCounterC(), billingAccount.getCounterD(), request.getService(), billingAccount.getServiceBPlan(), billingAccount.getBucketA(), billingAccount.getBucketB(),billingAccount.getBucketC());
-            }
-        } else this.CDR = null;
+            this.CDR = new ClientDataRecord(request.getTimestampDate(), billingAccount.getMSISDN(),
+                    request, this.charRep, billingAccount.getCounterA(), billingAccount.getCounterB(), billingAccount.getCounterC(), billingAccount.getCounterD(), request.getService(), billingAccount.getServiceBPlan(), billingAccount.getBucketA(), billingAccount.getBucketB(),billingAccount.getBucketC());
+        }
     }
     //Getter for CRD
     public ClientDataRecord getCDR() {return this.CDR;}
@@ -121,8 +119,9 @@ public class ChargingHandler {
 
                     //Checks if it nighttime (Assuming nighttime is between 22 and 7 in the morning of the next day)
 
-                    if(cal.get(Calendar.HOUR_OF_DAY)< 7 || cal.get(Calendar.HOUR_OF_DAY) > 22) cost += 0.50;
+                    if(cal.get(Calendar.HOUR_OF_DAY)< 7 && cal.get(Calendar.HOUR_OF_DAY) > 22) cost += 0.50;
                     else cost+=1;
+
                     cost *= request.getRSU();
                     if(billingAccount.getBucketA() - cost >=0) {
                         billingAccount.setBucketA(billingAccount.getBucketA() - cost);
@@ -154,7 +153,7 @@ public class ChargingHandler {
             //Checks if it's not roaming
             if(!request.getRoaming()){
                 //Checks if nighttime
-                if(cal.get(Calendar.HOUR_OF_DAY)< 7 || cal.get(Calendar.HOUR_OF_DAY) > 22) cost += 0.25;
+                if(cal.get(Calendar.HOUR_OF_DAY)< 7 && cal.get(Calendar.HOUR_OF_DAY) > 22) cost += 0.25;
                 else cost +=0.5;
                 cost *= request.getRSU();
                 // Checks if sufficient funds
@@ -215,7 +214,7 @@ public class ChargingHandler {
 
             if (request.getRoaming()) cost += 0.2;
             //Checks if its nightime
-            else if (cal.get(Calendar.HOUR_OF_DAY) < 7 || cal.get(Calendar.HOUR_OF_DAY) > 22) cost += 0.05;
+            else if (cal.get(Calendar.HOUR_OF_DAY) < 7 && cal.get(Calendar.HOUR_OF_DAY) > 22) cost += 0.05;
             else cost += 0.1;
             cost *= request.getRSU();
             //Verifies if roaming
@@ -277,7 +276,7 @@ public class ChargingHandler {
             //Checks if its not roaming
             if(!request.getRoaming()){
                 //Checks if night time
-                if(cal.get(Calendar.HOUR_OF_DAY)< 7 || cal.get(Calendar.HOUR_OF_DAY) > 22) cost += 0.025;
+                if(cal.get(Calendar.HOUR_OF_DAY)< 7 && cal.get(Calendar.HOUR_OF_DAY) > 22) cost += 0.025;
                 else cost +=0.05;
                 cost *= request.getRSU();
                 // Checks if suficient funds
@@ -305,7 +304,7 @@ public class ChargingHandler {
             if((cal.get(Calendar.DAY_OF_WEEK)!= 1 && cal.get(Calendar.DAY_OF_WEEK)!= 7)) {
                 cost+=0.1;
             }else {
-                cost+=0.025;
+                cost+=0.25;
             }
             cost *= request.getRSU();
 

@@ -5,20 +5,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class OperatorTest {
-    SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss");
-    public Date weekday = formatter.parse("7-Jun-2013 10:13:54"); // Friday morning
-
-    OperatorTest() throws ParseException {
-    }
 
     @BeforeEach
     void setUp() {
@@ -46,14 +38,14 @@ class OperatorTest {
     @Test
     void TestMakingRequest() {
         Operator op = new Operator();
-        ChargingRequest cReq1 = new ChargingRequest(977455676, false, 2,"A",this.weekday);
+        ChargingRequest cReq1 = new ChargingRequest(977455676, false, 2,"A");
         op.makeRequest(cReq1);
         assertEquals(Collections.emptyMap(),op.getReportsByNumber());
         BillingAccount bAcc1 = new BillingAccount(977455676,"Alpha1", "Beta2" , 10,10,10);
         op.setBillingAccount(bAcc1);
         op.makeRequest(cReq1);
         assertNotEquals(Collections.emptyMap(),op.getReportsByNumber());
-        ChargingRequest cReq2 = new ChargingRequest(977455676, false, 2,"A",this.weekday);
+        ChargingRequest cReq2 = new ChargingRequest(977455676, false, 2,"A");
         op.makeRequest(cReq2);
         assertEquals(1,op.getReportsByNumber().size());
 

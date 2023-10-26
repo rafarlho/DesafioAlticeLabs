@@ -21,15 +21,6 @@ public class ChargingRequest {
         this.timeStampString = setDate();
         this.service = service;
     }
-    public ChargingRequest(Integer newMSISDN, boolean isRoaming,int RSUvalue, String service, Date date) {
-        this.MSISDN = newMSISDN;
-        this.ID =counter ++; //Set a sequential ID value;
-        this.roaming = isRoaming;
-        this.RSU = RSUvalue;
-        this.timeStamp =  date;
-        this.timeStampString = date.toString();
-        this.service = service;
-    }
     //Getter for MSISDN
     public int getMSISDN() {return this.MSISDN;}
     // Return the date of the request as a String
