@@ -18,6 +18,7 @@ Com face ao desafio proposto, a lista de ficheiros correspondestes é a seguinte
 			->ChargingHandler.java
 			->Operator.java
 
+
  - BillingAccount.java
 
 Classe que representa uma conta de um utilizador. Tem a informação do número, tarifários de ambos os serviços, buckets e counters.
@@ -58,7 +59,9 @@ Caso não exista o número do pedido nos billings records, retorna uma mensagem 
 
 Teste unitário aplicado à classe Operator, recorrendo a Junit5, que testa o Contrutor da classe e inicialização dos HashMaps de BillingAccounts e CDRs, a adição de uma BillingAccount ao respetivo HashMap e a efetuação de um pedido, mais especificamente, a adição de CDRs de um utilizador ao respetivo HashMap.
 
+
 - CharginHandlerTest.java
+
 Classe de testes que testa a cobrança dos vários tarifários e dos valores aplicáveis possíveis. Esta classe testa todos os tarifários em diferentes condições e com diferentes valores nos buckets, assegurando que a cobrança efetuada é sempre correta.
 
 		
